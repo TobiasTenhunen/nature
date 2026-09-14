@@ -76,20 +76,19 @@ export default class Bubble {
     }
 
     _checkWalls() {
-        // A little bit of margin to make sure it doesn't go out of the screen
-        const margin = 0
-        const topMargin = 0
+        // A little bit of margin, without this it went a little out of the container.
+        const verticalMargin = 1.5
         
         // Position is the percentage of how far it is in the container.
         const min = this.diameter / 2
-        const max = (100 - this.diameter / 2) - margin
+        const max = (100 - this.diameter / 2)
 
         if (this.position.x < min || this.position.x > max) {
             this.velocity.x *= -1
             this.direction.x *= -1
         }
 
-        if (this.position.y < min + topMargin || this.position.y > max) {
+        if (this.position.y < min + verticalMargin || this.position.y > max - verticalMargin) {
             this.velocity.y *= -1
             this.direction.y *= -1
         }
